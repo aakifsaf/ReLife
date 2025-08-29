@@ -24,7 +24,7 @@ ReLife is a web application that aims to facilitate sustainable living by empowe
 - **Product Purchase**: Users can purchase products securely.
 
 ## Setup
-1. **Clone the repository**: `git clone https://github.com/your-username/relife.git`
+1. **Clone the repository**: `git clone https://github.com/aakifsaf/relife.git`
 2. **Install dependencies**:
    - In the frontend directory, run `npm install` to install React and Vite dependencies.
    - In the backend directory, run `pip install -r requirements.txt` to install Django and its dependencies.
