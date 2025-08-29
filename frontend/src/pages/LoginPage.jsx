@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     setFormData({
@@ -19,9 +22,10 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setError('');
     
     try {
-      // Simulate API call to login endpoint
+      // API call to login endpoint
       const response = await fetch('http://localhost:8000/api/auth/login/', {
         method: 'POST',
         headers: {
@@ -33,15 +37,22 @@ const LoginPage = () => {
       if (response.ok) {
         const data = await response.json();
         console.log(data);
-        // Store token in localStorage or context
-        localStorage.setItem('token', data.token);
-        navigate('/dashboard');
+        // Use the login function from context
+        login(data.user, data.token);
+        if(data.user.user_type === 'individual') {
+          navigate('/user-dashboard');
+        } else if(data.user.user_type === 'recycling_center') {
+          navigate('/center-dashboard');
+        } else if(data.user.user_type === 'staff') {
+          navigate('/staff-dashboard');
+        }
       } else {
-        // Handle error
-        console.error('Login failed');
+        const errorData = await response.json();
+        setError(errorData.detail || 'Login failed');
       }
     } catch (error) {
       console.error('Network error:', error);
+      setError('Network error. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -49,22 +60,24 @@ const LoginPage = () => {
 
   const handleSocialLogin = async (provider) => {
     setIsLoading(true);
+    setError('');
     
     try {
-      // Simulate API call to social login endpoint
+      // API call to social login endpoint
       const response = await fetch(`http://localhost:8000/api/auth/${provider}/`, {
         method: 'POST'
       });
       
       if (response.ok) {
         const data = await response.json();
-        localStorage.setItem('token', data.token);
+        login(data.user, data.token);
         navigate('/dashboard');
       } else {
-        console.error(`${provider} login failed`);
+        setError(`${provider} login failed`);
       }
     } catch (error) {
       console.error('Network error:', error);
+      setError('Network error. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -146,6 +159,12 @@ const LoginPage = () => {
               <h1 className="text-3xl font-bold text-gray-800 mb-2">Sign In to EcoCycle</h1>
               <p className="text-gray-600">Continue your green journey</p>
             </div>
+
+            {error && (
+              <div className="mb-6 p-3 bg-red-100 text-red-700 rounded-lg">
+                {error}
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
