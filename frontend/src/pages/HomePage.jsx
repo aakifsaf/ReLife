@@ -96,7 +96,7 @@ const HomePage = () => {
             <div className="w-10 h-10 rounded-full bg-gradient-to-r from-green-400 to-teal-500 flex items-center justify-center">
               <i className="fas fa-leaf text-white text-xl"></i>
             </div>
-            <h1 className="text-2xl font-bold text-gray-800">EcoCycle</h1>
+            <h1 className="text-2xl font-bold text-gray-800">ReLife</h1>
           </div>
           <nav className="hidden md:flex space-x-8">
             <a href="#how-it-works" className="text-gray-600 hover:text-green-600 transition-colors">How It Works</a>
