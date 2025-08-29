@@ -10,7 +10,7 @@ class CenterApiService {
     }
   
     async request(endpoint, options = {}) {
-      const response = await fetch(`http://localhost:8000/api/center${endpoint}`, {
+      const response = await fetch(`https://relife-v0ud.onrender.com/api/center${endpoint}`, {
         method: options.method || 'GET',
         headers: {
           'Authorization': `Bearer ${this.getToken()}`,

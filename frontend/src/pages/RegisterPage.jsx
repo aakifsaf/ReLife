@@ -72,7 +72,7 @@ const RegisterPage = () => {
     
     try {
       // Simulate API call to register endpoint
-      const response = await fetch('http://localhost:8000/api/auth/register/', {
+      const response = await fetch('https://relife-v0ud.onrender.com/api/auth/register/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -117,7 +117,7 @@ const RegisterPage = () => {
     
     try {
       // Simulate API call to social register endpoint
-      const response = await fetch(`http://localhost:8000/api/auth/${provider}/register/`, {
+      const response = await fetch(`https://relife-v0ud.onrender.com/api/auth/${provider}/register/`, {
         method: 'POST'
       });
       

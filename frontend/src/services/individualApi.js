@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:8000/api/individual';
+const API_BASE_URL = 'https://relife-v0ud.onrender.com/api/individual';
 
 class IndividualApiService {
   // Dynamically retrieve token before each request

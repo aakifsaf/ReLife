@@ -26,7 +26,7 @@ const LoginPage = () => {
     
     try {
       // API call to login endpoint
-      const response = await fetch('http://localhost:8000/api/auth/login/', {
+      const response = await fetch('https://relife-v0ud.onrender.com/api/auth/login/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -64,7 +64,7 @@ const LoginPage = () => {
     
     try {
       // API call to social login endpoint
-      const response = await fetch(`http://localhost:8000/api/auth/${provider}/`, {
+      const response = await fetch(`https://relife-v0ud.onrender.com/api/auth/${provider}/`, {
         method: 'POST'
       });
       
