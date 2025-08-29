@@ -6,9 +6,9 @@ const ChallengesTab = ({ userData }) => {
   
   const filteredChallenges = () => {
     if (activeFilter === 'completed') 
-      return userData.challenges.filter(c => c.progress >= c.target);
+      return userData.completedChallenges.filter(c => c.progress >= c.target);
     if (activeFilter === 'active') 
-      return userData.challenges.filter(c => c.progress < c.target);
+      return userData.activeChallenges.filter(c => c.progress < c.target);
     return userData.challenges;
   };
 

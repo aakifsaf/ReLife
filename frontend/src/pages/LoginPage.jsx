@@ -38,7 +38,7 @@ const LoginPage = () => {
         const data = await response.json();
         console.log(data);
         // Use the login function from context
-        login(data.user, data.token);
+        login(data.user, data.access);
         if(data.user.user_type === 'individual') {
           navigate('/user-dashboard');
         } else if(data.user.user_type === 'recycling_center') {

@@ -49,7 +49,7 @@ const DashboardTab = ({ userData, setActiveTab }) => {
         <StatCard 
           icon={<FaTrophy className="text-yellow-500 text-xl" />} 
           title="Active Challenges" 
-          value={userData.challenges.length} 
+          value={userData.activeChallenges.length} 
           subtitle="Ongoing"
           color="bg-yellow-100"
         />
@@ -130,7 +130,7 @@ const DashboardTab = ({ userData, setActiveTab }) => {
             </div>
             
             <div className="space-y-6">
-              {userData.challenges.map((challenge) => (
+              {userData.activeChallenges.map((challenge) => (
                 <div key={challenge.id}>
                   <div className="flex justify-between mb-1">
                     <span className="font-medium">{challenge.name}</span>
