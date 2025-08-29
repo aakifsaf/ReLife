@@ -34,7 +34,7 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://re-life-gamma.vercel.app/"
+    "https://re-life-gamma.vercel.app"
 ]
 CORS_ALLOW_CREDENTIALS = True
 # Application definition
